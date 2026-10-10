@@ -1,0 +1,213 @@
+{
+  "single_call_panel": [
+    {
+      "file": "qwen3-8b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-B1-S1024-TILE64"
+      },
+      "flash_us": 14.25600005313754,
+      "tile64_us": 12.575999833643436,
+      "gain_vs_flash_pct": 11.784513280247644,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "qwen3-14b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 40,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-14B-B1-S1024-TILE64"
+      },
+      "flash_us": 13.856000266969204,
+      "tile64_us": 11.04000024497509,
+      "gain_vs_flash_pct": 20.323325402259627,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "qwen3-32b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 64,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-32B-B1-S1024-TILE64"
+      },
+      "flash_us": 14.271999709308147,
+      "tile64_us": 11.103999800980091,
+      "gain_vs_flash_pct": 22.197309226834538,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "qwen3-30b-a3b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 32,
+        "kv_heads": 4,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-30B-A3B-B1-S1024-TILE64"
+      },
+      "flash_us": 14.128000009804964,
+      "tile64_us": 10.816000401973724,
+      "gain_vs_flash_pct": 23.44280581492555,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "qwen3-1p7b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 16,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-1.7B-B1-S1024-TILE64"
+      },
+      "flash_us": 14.208000153303146,
+      "tile64_us": 11.087999679148197,
+      "gain_vs_flash_pct": 21.959462559757903,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "qwen2p5-7b.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 28,
+        "kv_heads": 4,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen2.5-7B-B1-S1024-TILE64"
+      },
+      "flash_us": 13.87199992313981,
+      "tile64_us": 10.127999819815159,
+      "gain_vs_flash_pct": 26.989620271546457,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    }
+  ],
+  "median_paired_gain_pct": 22.078385893296222,
+  "median_flash_us": 14.168000081554055,
+  "median_tile64_us": 11.063999962061644,
+  "other_controls": [
+    {
+      "file": "tile64-b1-s1024-reverse.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-B1-S1024-TILE64-REVERSE"
+      },
+      "flash_us": 14.336000196635723,
+      "tile64_us": 12.703999876976013,
+      "gain_vs_flash_pct": 11.383930645053264,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "tile64-b1-s2048.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 2048,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-B1-S2048-TILE64"
+      },
+      "flash_us": 15.440000221133232,
+      "tile64_us": 12.543999589979649,
+      "gain_vs_flash_pct": 18.756480503087904,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "tile64-b2-s2048.json",
+      "shape": {
+        "batch": 2,
+        "seq_len": 2048,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-B2-S2048-TILE64"
+      },
+      "flash_us": 16.976000741124153,
+      "tile64_us": 14.895999804139137,
+      "gain_vs_flash_pct": 12.252596878994238,
+      "graph_calls": 1,
+      "all_numerical_gates_pass": true
+    },
+    {
+      "file": "three-way.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-multi100"
+      },
+      "flash_us": 9.999040067195892,
+      "tile64_us": 6.7528000473976135,
+      "gain_vs_flash_pct": 32.46551666942812,
+      "graph_calls": 100,
+      "all_numerical_gates_pass": true,
+      "triton16_us": 8.430079817771912,
+      "gain_vs_triton16_pct": 19.896368796394228
+    },
+    {
+      "file": "three-way-reverse.json",
+      "shape": {
+        "batch": 1,
+        "seq_len": 1024,
+        "q_heads": 32,
+        "kv_heads": 8,
+        "head_dim": 128,
+        "block_size": 128,
+        "dtype": "torch.bfloat16",
+        "label": "Qwen3-8B-multi100-reverse"
+      },
+      "flash_us": 9.443999826908112,
+      "tile64_us": 6.6601598262786865,
+      "gain_vs_flash_pct": 29.477340657055386,
+      "graph_calls": 100,
+      "all_numerical_gates_pass": true,
+      "triton16_us": 8.368319869041443,
+      "gain_vs_triton16_pct": 20.412222160413418
+    }
+  ],
+  "all_recorded_numerical_gates_pass": true,
+  "scope": "Recorded GPU evidence audit; no new GPU execution; not external reproduction or engine throughput"
+}

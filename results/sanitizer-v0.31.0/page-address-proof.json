@@ -1,0 +1,22 @@
+{
+  "checked_cases": 65536,
+  "lengths": "1..4096",
+  "blocks": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "tiles": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "result": "All last-tile page loads are safe with page mask or clamp; every valid token retains its original physical-page index.",
+  "negative_controls": {
+    "raw_tail_exceeds_compact_table": true,
+    "token_mask_splits_valid_last_page": true
+  },
+  "scope": "CPU exhaustive pointer arithmetic; GPU feature/semantic tests retained separately"
+}

@@ -1,0 +1,72 @@
+{
+  "claim": "A fresh Qwen3-8B-AWQ B1 default-compile ABBA on an H100 measured +2.6091155% median paired throughput (+2.5427014% median paired latency reduction) for guarded tile64 versus FLASH_ATTN; it remains below the >=5% selector-PR gate.",
+  "live_comparator": {
+    "artifact": "vLLM 0.31.0 FLASH_ATTN in the paired children below",
+    "metric": "median paired throughput gain versus FLASH_ATTN",
+    "prior_value_pct": 1.9359033205929799,
+    "value_pct": 2.6091155479253336,
+    "delta_vs_prior_percentage_points": 0.6732122273323537,
+    "gate_pct": 5.0,
+    "url": "https://github.com/vllm-project/vllm/releases/tag/v0.31.0"
+  },
+  "data_source": {
+    "remote_run": "infer-attn-kernels-1007-155528-hsmh",
+    "model": "Qwen/Qwen3-8B-AWQ",
+    "revision": "4da05a8edb55c6046cce958586c33b61da07bb79",
+    "hardware": "NVIDIA H100 80GB HBM3, SM90",
+    "vllm": "0.31.0",
+    "candidate_source_sha256": "2a6a94b70ba48e1fb20af4894da1b5ad375cc1159f01b61a592bfc68e63ca854",
+    "scope": "B1, prompt 1024, output 128, page 128, default FULL_AND_PIECEWISE compilation, seven measured generations per child, FLASH/guarded64/guarded64/FLASH, engine wall time including prefill/decode/scheduling/output collection; model load and compile excluded"
+  },
+  "result": {
+    "paired_throughput_gains_pct": [2.6962824182531486, 2.5219486775975186],
+    "median_paired_throughput_gain_pct": 2.6091155479253336,
+    "paired_latency_reductions_pct": [2.6254917459153426, 2.4599109850402145],
+    "median_paired_latency_reduction_pct": 2.542701365477779,
+    "exact_greedy_token_parity": true,
+    "altered_token_negative_control_rejected": true,
+    "candidate_decode_telemetry": "tile64/4-warps/2-stages; tile16/3-stages prefill; non-3D tile32",
+    "selector_pr_gate_met": false
+  },
+  "scoring_rule": "Median of the two original FLASH/candidate paired throughput ratios; no pooling with other batch, output, dtype, thread, or allocation scopes.",
+  "evidence_files": [
+    "results/qwen3-8b-awq-session-1600/session-1600-0-flash.json",
+    "results/qwen3-8b-awq-session-1600/session-1600-1-guarded64.json",
+    "results/qwen3-8b-awq-session-1600/session-1600-2-guarded64.json",
+    "results/qwen3-8b-awq-session-1600/session-1600-3-flash.json",
+    "results/qwen3-8b-awq-session-1600/triton_unified_attention_guarded.py",
+    "results/qwen3-8b-awq-session-1600/audit_session1600.py",
+    "results/qwen3-8b-awq-session-1600/audit_session1600.json"
+  ],
+  "verification": {
+    "commands": [
+      "python3 results/qwen3-8b-awq-session-1600/audit_session1600.py"
+    ],
+    "status": "PASS",
+    "original_input_files": 4,
+    "finite_timing_and_runtime_identity": true,
+    "exact_token_parity": true,
+    "candidate_source_hash": true,
+    "launch_signature": true,
+    "negative_control": "recorded output token mutation rejected"
+  },
+  "evidence_levels": {
+    "reported": "Four child JSONs returned by Daytona H100 run",
+    "reproduced": "Lead independently recomputed medians, paired gains, model/runtime identity, source hash, telemetry, exact token parity, and mutation rejection",
+    "independently_checked": "Original-input audit passes; no model-written score is used",
+    "submitted": false,
+    "accepted": false,
+    "upstream_acceptance": "unknown"
+  },
+  "scope_notes": [
+    "The child scope string says 'public bf16 weights' although the model and revision are Qwen3-8B-AWQ; scoring uses the explicit model, revision, and runtime configuration fields.",
+    "Telemetry records launch signatures but not full runtime guard provenance (batch/query/context/capture fields); this result does not claim complete route attribution or validate the composed route-key patch."
+  ],
+  "charter_acceptance_met": false,
+  "remaining_uncertainty": [
+    "Canonical BF16 Qwen3-8B serving remains unmeasured because the Daytona disk is too small.",
+    "Route-keyed FULL-graph replay and full runtime guard provenance remain unvalidated.",
+    "The measured AWQ serving gain remains below the >=5% selector-PR gate."
+  ],
+  "next_decision": "Keep the selector PR closed. When capacity permits, run the composed route-keyed Qwen3-8B FULL_AND_PIECEWISE ABBA with runtime guard provenance and maintainer numerical validation; otherwise use the fresh AWQ B1 result as the live comparator."
+}

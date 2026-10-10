@@ -1,0 +1,4 @@
+========= COMPUTE-SANITIZER
+{"phase": "before_kernel", "args": {"source": "main_pagemasked", "length": 1025, "tile": 16, "stages": 2, "batch": 4, "force_2d": false, "out": "main_pagemasked3d-b4-s1025.json"}, "table_bytes": 1040, "allocator_caching_disabled": "1"}
+{"phase": "complete", "args": {"source": "main_pagemasked", "length": 1025, "tile": 16, "stages": 2, "batch": 4, "force_2d": false, "out": "main_pagemasked3d-b4-s1025.json"}, "table_bytes": 1040, "page_width": 65, "max_abs_error": 0.0009765625, "finite": true, "numerical_pass": true, "negative_control_rejected": true, "telemetry": {"grid": [5, 8, 16], "tile": 16, "is_3d": true, "stages": 3, "warps": 4}, "source_sha256": "b64ea60e158e74685d44d67f6581906b26f41e2528a7b0803f070f7742d91b6b", "native_no_tile_or_stage_override": true, "no_cuda_memory_caching": "1", "environment": {"torch": "2.13.0+cu130", "cuda": "13.0", "device": "NVIDIA H100 80GB HBM3", "capability": [9, 0]}}
+========= ERROR SUMMARY: 0 errors

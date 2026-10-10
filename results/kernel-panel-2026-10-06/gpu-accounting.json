@@ -1,0 +1,171 @@
+{
+  "rate_basis": "user-provided H100 GPU rate $2.27/hour; allocation-cap bounds, not invoices; excludes CPU/RAM",
+  "runs": [
+    {
+      "run": "infer-attn-kernels-1006-191944-dau0",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:19:44Z",
+      "finished": "2026-10-06T19:20:41Z",
+      "return_code": 1,
+      "error": null,
+      "attempt": "worker/worker2-1",
+      "purpose": "tile8 compile test"
+    },
+    {
+      "run": "infer-attn-kernels-1006-192621-lr54",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:26:21Z",
+      "finished": "2026-10-06T19:27:24Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-2",
+      "purpose": "tile64 primary shape"
+    },
+    {
+      "run": "infer-attn-kernels-1006-192834-owqt",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:28:34Z",
+      "finished": "2026-10-06T19:29:30Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-2",
+      "purpose": "tile64 primary shape reversed order"
+    },
+    {
+      "run": "infer-attn-kernels-1006-193028-k04d",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:30:28Z",
+      "finished": "2026-10-06T19:31:34Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-2",
+      "purpose": "tile64 B2 S2048"
+    },
+    {
+      "run": "infer-attn-kernels-1006-193341-2qyv",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:33:41Z",
+      "finished": "2026-10-06T19:34:39Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-2",
+      "purpose": "tile64 B1 S2048"
+    },
+    {
+      "run": "infer-attn-kernels-1006-193601-qada",
+      "hours_cap": 1.0,
+      "gpu_cost_cap_usd": 2.27,
+      "started": "2026-10-06T19:36:01Z",
+      "finished": "2026-10-06T19:37:19Z",
+      "return_code": 1,
+      "error": "Failed to execute command: ",
+      "attempt": "worker/worker2-3",
+      "purpose": "six-shape batch sandbox infrastructure failure"
+    },
+    {
+      "run": "infer-attn-kernels-1006-193907-n609",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:39:07Z",
+      "finished": "2026-10-06T19:40:03Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen3-14B"
+    },
+    {
+      "run": "infer-attn-kernels-1006-194040-0g6r",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:40:40Z",
+      "finished": "2026-10-06T19:41:37Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen3-32B"
+    },
+    {
+      "run": "infer-attn-kernels-1006-194151-mubc",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:41:51Z",
+      "finished": "2026-10-06T19:42:49Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen3-30B-A3B"
+    },
+    {
+      "run": "infer-attn-kernels-1006-194353-uqx9",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:43:53Z",
+      "finished": "2026-10-06T19:45:15Z",
+      "return_code": 1,
+      "error": "Failed to execute command: command execution timeout",
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen3-1.7B infrastructure timeout"
+    },
+    {
+      "run": "infer-attn-kernels-1006-194538-ol8x",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:45:38Z",
+      "finished": "2026-10-06T19:47:43Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen2.5-7B"
+    },
+    {
+      "run": "infer-attn-kernels-1006-194821-oij8",
+      "hours_cap": 1.0,
+      "gpu_cost_cap_usd": 2.27,
+      "started": "2026-10-06T19:48:21Z",
+      "finished": "2026-10-06T19:49:21Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-3",
+      "purpose": "tile64 Qwen3-1.7B retry"
+    },
+    {
+      "run": "infer-attn-kernels-1006-195314-pyn7",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:53:14Z",
+      "finished": "2026-10-06T19:53:58Z",
+      "return_code": 2,
+      "error": null,
+      "attempt": ".",
+      "purpose": "wrong-directory control launch; no evidence"
+    },
+    {
+      "run": "infer-attn-kernels-1006-195346-xr4p",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:53:46Z",
+      "finished": "2026-10-06T19:54:44Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-4",
+      "purpose": "100-call same-input three-way control"
+    },
+    {
+      "run": "infer-attn-kernels-1006-195508-83pg",
+      "hours_cap": 0.5,
+      "gpu_cost_cap_usd": 1.135,
+      "started": "2026-10-06T19:55:08Z",
+      "finished": "2026-10-06T19:56:05Z",
+      "return_code": 0,
+      "error": null,
+      "attempt": "worker/worker2-4",
+      "purpose": "100-call same-input three-way reversed order"
+    }
+  ],
+  "total_gpu_cost_cap_usd": 19.3
+}

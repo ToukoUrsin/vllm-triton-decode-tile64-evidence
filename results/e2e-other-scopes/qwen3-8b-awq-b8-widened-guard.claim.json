@@ -1,0 +1,65 @@
+{
+  "claim": "A widened batch guard that permits the tile64 Triton decode kernel at Qwen3-8B AWQ batch 8 measured -1.3359434% median paired throughput versus FLASH_ATTN in default FULL_AND_PIECEWISE generation; exact tokens and kernel telemetry passed, so the widened-batch hypothesis is a measured null.",
+  "live_comparator": {
+    "name": "Qwen3-8B-AWQ vLLM 0.31.0 FLASH_ATTN on the same H100 allocation and generation scope",
+    "url": "https://github.com/vllm-project/vllm/releases/tag/v0.31.0",
+    "metric": "median of two ABBA-paired throughput ratios",
+    "value_pct": -1.3359433693617306,
+    "gate_pct": 5.0
+  },
+  "data_source": {
+    "model_url": "https://huggingface.co/Qwen/Qwen3-8B-AWQ",
+    "model_revision": "4da05a8edb55c6046cce958586c33b61da07bb79",
+    "hardware": "NVIDIA H100 80GB HBM3, SM90",
+    "environment": "torch 2.13.0+cu130, CUDA 13.0, vLLM 0.31.0",
+    "worker_packet": "worker/worker3-50-awq-b8-abba",
+    "run_id": "infer-attn-kernels-1007-220440-5x6r",
+    "allocation_cap_hours": 0.5,
+    "allocation_cap_usd_upper_bound": 1.14,
+    "source_sha256": "b027d1139de1d2233bea226e4fb0335e738eb4fc9d1a907260761327b3c8702e",
+    "source_delta": "The measured source changes the validated 1<=num_seqs<=4 guard to 1<=num_seqs<=8; all other guard text is unchanged."
+  },
+  "result": {
+    "scope": "B8 homogeneous requests, prompt 1024, output 128, block size 128, max_model_len 2048, prefix caching disabled, default FULL_AND_PIECEWISE compilation",
+    "order": ["FLASH_ATTN", "widened-guard tile64", "widened-guard tile64", "FLASH_ATTN"],
+    "warmup": 1,
+    "samples_per_child": 3,
+    "flash_tokens_per_s": [1178.2571329428183, 1181.3005343109244],
+    "candidate_tokens_per_s": [1167.904725288191, 1160.1166695904128],
+    "paired_throughput_gains_pct": [-0.8786204101961181, -1.7932663285273431],
+    "median_paired_throughput_gain_pct": -1.3359433693617306,
+    "bootstrap_95_pct": [-1.7737027582030274, -1.1176178604288434],
+    "exact_greedy_token_parity": true,
+    "within_backend_deterministic": true,
+    "altered_token_negative_control_rejected": true,
+    "candidate_telemetry": "3-D tile64/4-warps/2-stages decode was observed; tile32 prefill and tile16 fallback/setup launches were also observed",
+    "selector_pr_gate_met": false
+  },
+  "scoring_rule": "Keep B8 separate from B1/B2/B4 and from the original 1<=num_seqs<=4 source. Score only the two original FLASH/candidate ABBA pairs from the raw child JSONs; do not infer an automatic-selector result because this packet explicitly widened the kernel guard.",
+  "evidence_files": [
+    "worker/worker3-50-awq-b8-abba/b8r-0-flash.json",
+    "worker/worker3-50-awq-b8-abba/b8r-1-guarded64.json",
+    "worker/worker3-50-awq-b8-abba/b8r-2-guarded64.json",
+    "worker/worker3-50-awq-b8-abba/b8r-3-flash.json",
+    "worker/worker3-50-awq-b8-abba/run-audit.json",
+    "worker/worker3-50-awq-b8-abba/daemon-completion.json",
+    "worker/worker3-50-awq-b8-abba/triton_unified_attention_guarded.py",
+    "worker/worker8-41-route-guard-contract/route-guard-contract-audit.json"
+  ],
+  "verification": [
+    "python3 worker/worker3-50-awq-b8-abba/audit_scope.py",
+    "python3 worker/worker3-50-awq-b8-abba/audit_run.py",
+    "PYTHONDONTWRITEBYTECODE=1 python3 worker/worker8-41-route-guard-contract/audit_route_guard_contract.py"
+  ],
+  "evidence_levels": {
+    "reported": "Completed worker packet and raw H100 child JSONs",
+    "reproduced": "Lead reran the original-input audit and source guard audit",
+    "independently_checked": "Finite timings, exact token parity, deterministic repeats, altered-token rejection, source identity, and tile64 telemetry pass; score is below threshold",
+    "submitted": false,
+    "accepted": false
+  },
+  "charter_acceptance_met": false,
+  "external_acceptance_met": false,
+  "remaining_uncertainty": "The widened batch-8 design is not a positive result; automatic route integration for batches above four remains intentionally fail-closed, and no broader serving gain is established.",
+  "next_decision": "Keep the selector PR closed. Retain the original batch<=4 guard and use the measured B8 null plus the 20 false-admission source controls to reject widening without a separate kernel design and validator evidence."
+}

@@ -1,0 +1,561 @@
+{
+  "source_sha256": "a188340d94e13c354f296e33b6861160bfdb9804835beb5c4b13057849c72a34",
+  "validator_sha256": "2c23a0e5a227053c144de5e2c0be14cf9c242d5c5ac2e2e53f553b7895bf34e1",
+  "validator_url": "https://github.com/vllm-project/vllm/blob/v0.31.0/tests/kernels/attention/test_triton_unified_attention.py",
+  "passed": 16,
+  "cases": [
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        16,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.00390625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        40,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        64,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.015625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        32,
+        4
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.00390625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        28,
+        4
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": true,
+      "qdtype": "None",
+      "max_abs_error": 0.00390625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 64,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 2
+      }
+    },
+    {
+      "heads": [
+        8,
+        2
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.00390625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "window": 128,
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "qdtype": "torch.float8_e4m3fn",
+      "active": false,
+      "max_abs_error": 0.06640625,
+      "atol": 0.15,
+      "rtol": 0.15,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 32,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 256,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          4096
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          1024
+        ],
+        [
+          1,
+          1024
+        ],
+        [
+          1,
+          1024
+        ],
+        [
+          1,
+          1024
+        ],
+        [
+          1,
+          1024
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.001953125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          37
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "threshold": 0,
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.0078125,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 32,
+        "is_3d": false,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          1328
+        ],
+        [
+          5,
+          18
+        ],
+        [
+          129,
+          463
+        ]
+      ],
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.015625,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 32,
+        "is_3d": false,
+        "warps": 4,
+        "stages": 3
+      }
+    },
+    {
+      "heads": [
+        32,
+        8
+      ],
+      "dim": 128,
+      "seq": [
+        [
+          1,
+          523
+        ],
+        [
+          1,
+          37
+        ],
+        [
+          1,
+          2011
+        ]
+      ],
+      "block_size": 64,
+      "active": false,
+      "qdtype": "None",
+      "max_abs_error": 0.00537109375,
+      "atol": 0.015,
+      "rtol": 0.01,
+      "pass": true,
+      "negative_control_rejected": true,
+      "launch": {
+        "tile": 16,
+        "is_3d": true,
+        "warps": 4,
+        "stages": 3
+      }
+    }
+  ],
+  "environment": {
+    "vllm": "0.31.0",
+    "torch": "2.13.0+cu130",
+    "device": "NVIDIA H100 80GB HBM3"
+  },
+  "scope": "Original test function/assertion directly called; not full pytest suite"
+}

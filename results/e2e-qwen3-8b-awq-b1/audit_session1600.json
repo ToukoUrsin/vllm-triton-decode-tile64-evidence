@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "source_sha256": "2a6a94b70ba48e1fb20af4894da1b5ad375cc1159f01b61a592bfc68e63ca854",
+  "pairs": [
+    {
+      "flash_file": "session-1600-0-flash.json",
+      "candidate_file": "session-1600-1-guarded64.json",
+      "flash_tokens_per_s": 203.16216734033432,
+      "candidate_tokens_per_s": 208.6399931388738,
+      "gain_pct": 2.6962824182531486,
+      "latency_reduction_pct": 2.6254917459153426
+    },
+    {
+      "flash_file": "session-1600-3-flash.json",
+      "candidate_file": "session-1600-2-guarded64.json",
+      "flash_tokens_per_s": 203.61386710000957,
+      "candidate_tokens_per_s": 208.74890432874344,
+      "gain_pct": 2.5219486775975186,
+      "latency_reduction_pct": 2.4599109850402145
+    }
+  ],
+  "median_pair_throughput_gain_pct": 2.6091155479253336,
+  "median_pair_latency_reduction_pct": 2.542701365477779,
+  "all_greedy_tokens_match": true,
+  "recorded_output_mutation_rejected": true,
+  "selector_pr_gate_met": false,
+  "scope": "Qwen3-8B-AWQ B1, prompt1024/output128, page128, vLLM0.31.0 H100 SM90, default FULL_AND_PIECEWISE, FLASH/guarded64/guarded64/FLASH, seven measured generations per child"
+}

@@ -1,0 +1,60 @@
+--- a/vllm/v1/attention/ops/triton_unified_attention.py
++++ b/vllm/v1/attention/ops/triton_unified_attention.py
+@@ -427,7 +427,9 @@
+         tile_mask = seq_offset < max_seq_prefix_len
+ 
+         physical_block_idx = tl.load(
+-            block_tables_ptr + block_table_offset + seq_offset // BLOCK_SIZE
++            block_tables_ptr + block_table_offset + seq_offset // BLOCK_SIZE,
++            mask=(seq_offset // BLOCK_SIZE) < cdiv_fn(seq_len, BLOCK_SIZE),
++            other=0,
+         ).to(tl.int64)
+ 
+         if USE_TD:
+@@ -1086,6 +1088,46 @@
+         grid = (total_num_q_blocks, num_kv_heads, num_par_softmax_segments)
+         tile_size = TILE_SIZE_DECODE
+ 
++    # Narrow Hopper bf16 decode launch: validated on short-context GQA.
++    # Retain the shipped partition count and all unmeasured feature paths.
++    tuned_hopper_decode = (
++        use_3d
++        and current_platform.is_device_capability(90)
++        and q.dtype == torch.bfloat16
++        and k.dtype == torch.bfloat16
++        and v.dtype == torch.bfloat16
++        and head_size == 128
++        and 1 <= num_seqs <= 4
++        and (num_query_heads, num_kv_heads) in ((32, 8), (40, 8), (64, 8), (32, 4), (16, 8), (28, 4))
++        and block_size in (16, 128)
++        and launch_num_warps is None
++        and launch_num_stages is None
++        and 1024 <= max_seqlen_k <= 2048
++        and num_par_softmax_segments == 16
++        and use_causal
++        and not use_per_seq_causal
++        and window_size == (-1, -1)
++        and kv_quant_mode == KVQuantMode.NONE
++        and output_scale is None
++        and sinks is None
++        and not use_alibi_slopes
++        and not use_qq_bias
++        and softcap == 0
++        and not use_mm_prefix
++        and not use_rswa
++        and chunk_lookback == -1
++        and not use_td
++    )
++    if tuned_hopper_decode:
++        tile_size = 64
++        TILE_SIZE_DECODE = 64
++        launch_num_warps = 4
++        # Two stages regress for four sequences with small pages and eight KV heads.
++        # Keep the shipped stage count for that measured subgroup.
++        launch_num_stages = (
++            3 if num_seqs == 4 and block_size == 16 and num_kv_heads == 8 else 2
++        )
++
+     launch_kwargs: dict[str, int] = {}
+     if launch_num_warps is not None:
+         launch_kwargs["num_warps"] = launch_num_warps

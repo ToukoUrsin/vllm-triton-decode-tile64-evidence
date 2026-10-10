@@ -1,0 +1,1 @@
+{"torch": "2.13.0+cu130", "vllm": "0.31.0", "triton": "3.7.1", "cuda": "13.0", "device": "NVIDIA H100 80GB HBM3", "cap": [9, 0]}
