@@ -1,0 +1,33 @@
+{
+ "id": "infer-attn-kernels-1012-181214-f0zf",
+ "track": "infer-attn-kernels",
+ "sub": ".",
+ "backend": "daytona",
+ "host": "daytona",
+ "cpus": 8,
+ "mem": 32,
+ "hours": 1.0,
+ "cmd": "bash serving-eval-20261012/block.sh p3 'shipped flash guarded'",
+ "back": [
+  "serving-eval-20261012/results/*"
+ ],
+ "gpu": "H100",
+ "image": "vllm/vllm-openai:v0.31.0",
+ "max_size": "2G",
+ "with_data": false,
+ "retries": 3,
+ "gpu_wait": 30,
+ "on_demand": false,
+ "disk": null,
+ "started": "2026-10-12T18:12:14Z",
+ "driver_pid": 3602050,
+ "sandbox": "eef42352-da17-4bef-9187-64497d76fcb4",
+ "sandboxes": [
+  "eef42352-da17-4bef-9187-64497d76fcb4"
+ ],
+ "changed": 59,
+ "copied_back": 56,
+ "attempts": 1,
+ "rc": 0,
+ "finished": "2026-10-12T18:27:02Z"
+}

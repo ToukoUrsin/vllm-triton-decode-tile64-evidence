@@ -1,0 +1,25 @@
+2026-10-12T18:12:42Z start p5-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T18:14:07Z ready p5-guarded
+2026-10-12T18:15:44Z done p5-guarded c1
+2026-10-12T18:16:37Z done p5-guarded c4
+2026-10-12T18:17:02Z done p5-guarded c8
+2026-10-12T18:17:24Z done p5-guarded c16
+2026-10-12T18:17:49Z done p5-guarded cmax
+2026-10-12T18:17:56Z end p5-guarded
+2026-10-12T18:18:00Z start p5-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:19:05Z ready p5-flash
+2026-10-12T18:20:44Z done p5-flash c1
+2026-10-12T18:21:37Z done p5-flash c4
+2026-10-12T18:22:02Z done p5-flash c8
+2026-10-12T18:22:24Z done p5-flash c16
+2026-10-12T18:22:48Z done p5-flash cmax
+2026-10-12T18:22:55Z end p5-flash
+2026-10-12T18:22:58Z start p5-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:23:34Z ready p5-shipped
+2026-10-12T18:25:13Z done p5-shipped c1
+2026-10-12T18:26:06Z done p5-shipped c4
+2026-10-12T18:26:32Z done p5-shipped c8
+2026-10-12T18:26:54Z done p5-shipped c16
+2026-10-12T18:27:19Z done p5-shipped cmax
+2026-10-12T18:27:26Z end p5-shipped
+2026-10-12T18:27:26Z ALL DONE p5

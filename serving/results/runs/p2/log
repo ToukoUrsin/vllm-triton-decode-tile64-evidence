@@ -1,0 +1,48 @@
+=== no Daytona GPU credits for on-demand: using spot
+=== fleet-run infer-attn-kernels-1012-181214-9jpl daytona sandbox 6f6801af-3f5d-405a-8722-7863a1969410 cpus=8 mem=32G gpu=H100 attempt=1
+2026-10-12T18:12:56Z start p2-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:14:36Z ready p2-flash
+2026-10-12T18:16:22Z done p2-flash c1
+2026-10-12T18:17:18Z done p2-flash c4
+2026-10-12T18:17:46Z done p2-flash c8
+2026-10-12T18:18:09Z done p2-flash c16
+2026-10-12T18:18:36Z done p2-flash cmax
+2026-10-12T18:18:43Z end p2-flash
+2026-10-12T18:18:47Z start p2-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T18:20:12Z ready p2-guarded
+2026-10-12T18:21:55Z done p2-guarded c1
+2026-10-12T18:22:49Z done p2-guarded c4
+2026-10-12T18:23:16Z done p2-guarded c8
+2026-10-12T18:23:40Z done p2-guarded c16
+2026-10-12T18:24:09Z done p2-guarded cmax
+2026-10-12T18:24:16Z end p2-guarded
+2026-10-12T18:24:20Z start p2-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:25:05Z ready p2-shipped
+2026-10-12T18:26:49Z done p2-shipped c1
+2026-10-12T18:27:45Z done p2-shipped c4
+2026-10-12T18:28:13Z done p2-shipped c8
+2026-10-12T18:28:37Z done p2-shipped c16
+2026-10-12T18:29:05Z done p2-shipped cmax
+2026-10-12T18:29:12Z end p2-shipped
+2026-10-12T18:29:12Z ALL DONE p2
+2026-10-12T18:18:09Z done p2-flash c16
+2026-10-12T18:18:36Z done p2-flash cmax
+2026-10-12T18:18:43Z end p2-flash
+2026-10-12T18:18:47Z start p2-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T18:20:12Z ready p2-guarded
+2026-10-12T18:21:55Z done p2-guarded c1
+2026-10-12T18:22:49Z done p2-guarded c4
+2026-10-12T18:23:16Z done p2-guarded c8
+2026-10-12T18:23:40Z done p2-guarded c16
+2026-10-12T18:24:09Z done p2-guarded cmax
+2026-10-12T18:24:16Z end p2-guarded
+2026-10-12T18:24:20Z start p2-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:25:05Z ready p2-shipped
+2026-10-12T18:26:49Z done p2-shipped c1
+2026-10-12T18:27:45Z done p2-shipped c4
+2026-10-12T18:28:13Z done p2-shipped c8
+2026-10-12T18:28:37Z done p2-shipped c16
+2026-10-12T18:29:05Z done p2-shipped cmax
+2026-10-12T18:29:12Z end p2-shipped
+2026-10-12T18:29:12Z ALL DONE p2
+=== exit 0

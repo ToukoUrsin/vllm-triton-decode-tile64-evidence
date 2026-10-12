@@ -1,0 +1,27 @@
+2026-10-12T18:13:32Z start p1-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:15:44Z ready p1-flash
+2026-10-12T18:18:28Z start p1-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:19:44Z ready p1-flash
+2026-10-12T18:21:24Z done p1-flash c1
+2026-10-12T18:22:16Z done p1-flash c4
+2026-10-12T18:22:40Z done p1-flash c8
+2026-10-12T18:23:01Z done p1-flash c16
+2026-10-12T18:23:25Z done p1-flash cmax
+2026-10-12T18:23:32Z end p1-flash
+2026-10-12T18:23:35Z start p1-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:24:41Z ready p1-shipped
+2026-10-12T18:26:17Z done p1-shipped c1
+2026-10-12T18:27:10Z done p1-shipped c4
+2026-10-12T18:27:35Z done p1-shipped c8
+2026-10-12T18:27:56Z done p1-shipped c16
+2026-10-12T18:28:21Z done p1-shipped cmax
+2026-10-12T18:28:28Z end p1-shipped
+2026-10-12T18:28:31Z start p1-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T18:29:06Z ready p1-guarded
+2026-10-12T18:30:43Z done p1-guarded c1
+2026-10-12T18:31:34Z done p1-guarded c4
+2026-10-12T18:31:59Z done p1-guarded c8
+2026-10-12T18:32:20Z done p1-guarded c16
+2026-10-12T18:32:45Z done p1-guarded cmax
+2026-10-12T18:32:52Z end p1-guarded
+2026-10-12T18:32:52Z ALL DONE p1

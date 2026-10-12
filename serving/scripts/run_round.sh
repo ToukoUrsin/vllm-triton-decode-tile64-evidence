@@ -3,7 +3,7 @@
 # usage: run_round.sh VARIANT(flash|shipped|guarded) TAG
 set -u
 VARIANT=$1; TAG=$2
-W=/root/w; MODEL=$W/model; OUT=$W/results/$TAG
+W=${W:-$PWD}; MODEL=/root/model; OUT=$W/results/$TAG
 mkdir -p $OUT/telemetry
 SITE=$(python3 -c "import vllm,os;print(os.path.dirname(vllm.__file__))")
 TARGET=$SITE/v1/attention/ops/triton_unified_attention.py

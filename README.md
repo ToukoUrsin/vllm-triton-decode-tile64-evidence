@@ -100,7 +100,7 @@ cd bench/e2e && VLLM_ENABLE_V1_MULTIPROCESSING=0 python3 -u engine_compare.py --
 
 - `kernel/` guarded source and patches
 - `bench/` kernel panel, end-to-end, and sanitizer scripts
-- `serving/` continuous-batching serving evaluation (ITL, TTFT, throughput at concurrency 1-16 and max; 2026-10-12)
+- `serving/` continuous-batching serving evaluation (ITL, TTFT, throughput at concurrency 1-16 and max; six paired H100 blocks, 2026-10-12)
 - `results/` raw JSON and logs: `kernel-panel-2026-10-06`, `kernel-panel-100call-2026-10-06`, `rerun-2026-10-10`,
   `e2e-qwen3-8b-awq-b1`, `e2e-other-scopes`, `sanitizer-v0.31.0`
 

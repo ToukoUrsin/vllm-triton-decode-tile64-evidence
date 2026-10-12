@@ -1,94 +1,122 @@
-blocks: a1, b1, b2, b3 (n per comparison in summary json)
+blocks: p1, p2, p3, p4, p5, p6 (n per comparison in summary json)
 | conc | metric | FLASH_ATTN | Triton shipped | Triton guarded | guarded vs shipped | guarded vs FLASH |
 |---|---|---|---|---|---|---|
-| 1 | out tok/s | 205 | 205 | 209 | +1.9% [-1.2,+5.0] | +2.4% [+0.5,+4.0] |
-| 1 | TTFT p50 | 33.96 | 37.72 | 38.37 | -1.6% [-4.3,+4.2] | -11.8% [-13.9,-9.9] |
-| 1 | TTFT p99 | 51.60 | 60.95 | 61.70 | -1.2% [-3.3,+2.8] | -16.3% [-16.5,-16.0] |
-| 1 | TPOT p50 | 4.73 | 4.71 | 4.61 | +2.1% [-1.1,+5.2] | +2.8% [+1.2,+4.1] |
-| 1 | TPOT p99 | 4.86 | 4.85 | 4.70 | +3.3% [-0.3,+6.3] | +3.9% [+1.2,+7.0] |
-| 1 | ITL p50 | 4.71 | 4.70 | 4.60 | +2.2% [-1.0,+5.3] | +2.8% [+0.8,+4.3] |
-| 1 | ITL p99 | 5.03 | 5.03 | 4.90 | +2.8% [-1.4,+5.6] | +2.7% [+0.9,+3.9] |
-| 4 | out tok/s | 727 | 710 | 721 | +1.6% [-0.9,+3.9] | -0.6% [-1.4,+0.2] |
-| 4 | TTFT p50 | 40.90 | 45.05 | 44.65 | +0.9% [+0.2,+1.8] | -9.4% [-10.0,-8.6] |
-| 4 | TTFT p99 | 116.52 | 128.38 | 128.22 | +0.1% [-1.9,+3.5] | -9.5% [-10.6,-7.8] |
-| 4 | TPOT p50 | 5.22 | 5.34 | 5.25 | +1.6% [-1.2,+4.1] | -0.3% [-1.4,+0.5] |
-| 4 | TPOT p99 | 5.76 | 6.03 | 5.93 | +1.8% [-2.4,+5.2] | -2.1% [-3.2,-1.4] |
-| 4 | ITL p50 | 4.94 | 5.01 | 4.91 | +1.9% [-0.9,+4.4] | +1.0% [-0.1,+1.9] |
-| 4 | ITL p99 | 14.39 | 15.88 | 15.79 | +0.6% [-1.7,+1.9] | -7.7% [-12.6,-4.1] |
-| 8 | out tok/s | 1240 | 1207 | 1214 | +0.6% [-0.4,+2.3] | -2.4% [-3.1,-1.8] |
-| 8 | TTFT p50 | 43.06 | 49.22 | 48.13 | +2.3% [+0.1,+4.8] | -11.3% [-13.1,-9.7] |
-| 8 | TTFT p99 | 142.79 | 157.41 | 158.22 | -0.5% [-1.8,+1.5] | -10.4% [-10.9,-9.7] |
-| 8 | TPOT p50 | 5.96 | 6.07 | 6.05 | +0.3% [-0.6,+1.9] | -1.9% [-2.7,-1.0] |
-| 8 | TPOT p99 | 7.10 | 7.40 | 7.36 | +0.5% [-0.6,+2.4] | -4.0% [-5.8,-2.3] |
-| 8 | ITL p50 | 5.32 | 5.33 | 5.30 | +0.4% [-0.9,+2.5] | +0.1% [-1.0,+1.0] |
-| 8 | ITL p99 | 25.34 | 27.04 | 26.57 | +1.7% [+0.3,+3.9] | -6.4% [-8.4,-4.8] |
-| 16 | out tok/s | 2362 | 2319 | 2332 | +0.6% [-0.6,+2.5] | -3.6% [-5.6,-2.1] |
-| 16 | TTFT p50 | 29.07 | 31.15 | 30.48 | +2.9% [-9.3,+20.3] | -10.9% [-13.4,-7.1] |
-| 16 | TTFT p99 | 159.62 | 158.67 | 160.98 | -3.4% [-10.0,+1.2] | -18.0% [-24.5,-13.8] |
-| 16 | TPOT p50 | 6.29 | 6.41 | 6.38 | +0.5% [-0.6,+2.4] | -3.7% [-5.6,-2.3] |
-| 16 | TPOT p99 | 6.82 | 6.93 | 6.86 | +0.9% [-0.6,+2.1] | -4.2% [-6.5,-2.4] |
-| 16 | ITL p50 | 5.76 | 5.87 | 5.84 | +0.4% [-0.7,+2.2] | -1.8% [-2.9,-0.5] |
-| 16 | ITL p99 | 16.58 | 16.72 | 16.94 | -0.7% [-2.4,+2.8] | -19.0% [-23.5,-10.7] |
-| max | out tok/s | 4477 | 4114 | 4121 | +0.2% [-0.0,+0.4] | -8.0% [-8.3,-7.9] |
-| max | TTFT p50 | 4203.96 | 4808.57 | 4670.49 | +2.9% [+0.4,+5.8] | -9.8% [-11.7,-8.7] |
-| max | TTFT p99 | 8192.25 | 9080.03 | 9064.30 | +0.2% [-0.0,+0.4] | -9.8% [-10.3,-9.0] |
-| max | TPOT p50 | 39.02 | 42.08 | 42.34 | -0.6% [-1.5,-0.0] | -8.0% [-8.5,-7.3] |
-| max | TPOT p99 | 162.44 | 178.55 | 181.47 | -1.6% [-3.1,+1.1] | -10.3% [-14.1,-7.3] |
-| max | ITL p50 | 21.77 | 22.63 | 22.56 | +0.3% [-0.6,+1.4] | -3.5% [-4.0,-2.6] |
-| max | ITL p99 | 429.68 | 471.58 | 474.83 | -0.7% [-1.7,+0.3] | -9.8% [-10.9,-9.0] |
+| 1 | out tok/s | 201 | 205 | 211 | +3.0% [+1.2,+4.7] | +4.9% [+2.8,+6.6] |
+| 1 | TTFT p50 | 38.13 | 40.62 | 40.78 | -0.7% [-8.9,+5.2] | -6.7% [-15.4,-2.3] |
+| 1 | TTFT p99 | 59.00 | 66.87 | 67.33 | -0.3% [-5.0,+5.2] | -12.7% [-16.1,-8.7] |
+| 1 | TPOT p50 | 4.82 | 4.72 | 4.57 | +3.3% [+1.5,+5.2] | +5.4% [+3.4,+7.0] |
+| 1 | TPOT p99 | 4.90 | 4.85 | 4.69 | +3.5% [+0.4,+6.9] | +4.6% [+1.3,+7.7] |
+| 1 | ITL p50 | 4.81 | 4.71 | 4.57 | +3.2% [+1.6,+5.1] | +5.3% [+3.4,+7.1] |
+| 1 | ITL p99 | 6.70 | 6.53 | 6.50 | +0.5% [-5.5,+3.2] | +3.2% [-1.8,+6.9] |
+| 4 | out tok/s | 719 | 710 | 730 | +2.8% [+1.6,+4.7] | +1.6% [+0.1,+3.7] |
+| 4 | TTFT p50 | 42.90 | 48.35 | 46.85 | +2.9% [-2.6,+9.8] | -8.7% [-14.3,-2.2] |
+| 4 | TTFT p99 | 122.17 | 136.47 | 135.41 | +0.6% [-4.4,+6.9] | -10.3% [-14.5,+4.3] |
+| 4 | TPOT p50 | 5.30 | 5.33 | 5.19 | +2.7% [+1.6,+4.1] | +2.1% [+1.0,+4.2] |
+| 4 | TPOT p99 | 5.94 | 6.06 | 5.91 | +2.5% [+0.4,+6.1] | +0.5% [-1.0,+3.0] |
+| 4 | ITL p50 | 5.01 | 4.99 | 4.84 | +3.0% [+1.9,+4.7] | +3.4% [+2.0,+5.8] |
+| 4 | ITL p99 | 15.34 | 17.47 | 17.75 | -1.3% [-8.5,+5.5] | -12.1% [-24.0,+3.3] |
+| 8 | out tok/s | 1225 | 1212 | 1220 | +0.6% [-0.3,+3.1] | -0.4% [-2.0,+1.5] |
+| 8 | TTFT p50 | 47.72 | 53.26 | 51.07 | +3.8% [-0.7,+13.3] | -6.9% [-16.0,-0.3] |
+| 8 | TTFT p99 | 152.55 | 164.95 | 160.40 | +2.6% [-0.2,+11.2] | -5.3% [-9.5,+10.6] |
+| 8 | TPOT p50 | 6.00 | 6.02 | 6.00 | +0.4% [-0.7,+2.4] | +0.1% [-1.1,+2.0] |
+| 8 | TPOT p99 | 7.19 | 7.35 | 7.32 | +0.4% [-0.8,+2.5] | -1.9% [-2.4,-1.0] |
+| 8 | ITL p50 | 5.37 | 5.28 | 5.26 | +0.4% [-0.6,+2.7] | +2.2% [+0.5,+4.3] |
+| 8 | ITL p99 | 24.88 | 27.72 | 26.95 | +3.1% [-3.7,+11.2] | -7.6% [-19.9,+1.7] |
+| 16 | out tok/s | 2512 | 2453 | 2466 | +0.5% [-0.4,+2.7] | -1.9% [-2.8,-0.7] |
+| 16 | TTFT p50 | 26.29 | 27.08 | 27.65 | -3.7% [-17.3,+7.7] | -4.6% [-17.3,+17.6] |
+| 16 | TTFT p99 | 81.03 | 82.21 | 77.46 | +4.2% [-23.2,+25.6] | +0.3% [-23.4,+36.7] |
+| 16 | TPOT p50 | 5.79 | 5.95 | 5.92 | +0.4% [-0.4,+2.2] | -2.2% [-2.9,-0.8] |
+| 16 | TPOT p99 | 5.91 | 6.10 | 6.09 | +0.2% [-0.6,+0.9] | -2.9% [-5.4,-1.2] |
+| 16 | ITL p50 | 5.76 | 5.80 | 5.77 | +0.5% [-0.1,+2.5] | -0.1% [-1.5,+2.1] |
+| 16 | ITL p99 | 9.31 | 11.00 | 11.27 | -2.7% [-10.4,+0.6] | -17.1% [-28.8,-3.7] |
+| max | out tok/s | 4447 | 4097 | 4094 | -0.1% [-0.4,+0.5] | -7.9% [-8.2,-7.5] |
+| max | TTFT p50 | 4321.66 | 4880.25 | 4878.94 | +0.1% [-5.4,+7.0] | -11.3% [-16.1,-6.8] |
+| max | TTFT p99 | 8262.34 | 9131.65 | 9137.84 | -0.1% [-0.8,+0.6] | -9.6% [-10.3,-8.9] |
+| max | TPOT p50 | 39.27 | 42.36 | 42.31 | +0.1% [-1.3,+1.8] | -7.2% [-8.1,-5.5] |
+| max | TPOT p99 | 159.76 | 183.09 | 182.91 | +0.1% [-1.0,+1.4] | -12.6% [-26.4,-8.6] |
+| max | ITL p50 | 21.85 | 22.86 | 22.76 | +0.4% [-1.1,+1.9] | -4.0% [-5.9,-2.9] |
+| max | ITL p99 | 426.05 | 469.64 | 474.63 | -1.1% [-3.1,-0.1] | -10.2% [-11.2,-8.9] |
 
-parity (identical of 12): {"a1:sequential:shipped~guarded": 12, "a1:sequential:flash~guarded": 9, "a1:sequential:flash~shipped": 9, "a1:concurrent:shipped~guarded": 12, "a1:concurrent:flash~guarded": 10, "a1:concurrent:flash~shipped": 10, "b1:sequential:shipped~guarded": 11, "b1:sequential:flash~guarded": 10, "b1:sequential:flash~shipped": 9, "b1:concurrent:shipped~guarded": 11, "b1:concurrent:flash~guarded": 9, "b1:concurrent:flash~shipped": 10, "b2:sequential:shipped~guarded": 12, "b2:sequential:flash~guarded": 9, "b2:sequential:flash~shipped": 9, "b2:concurrent:shipped~guarded": 12, "b2:concurrent:flash~guarded": 10, "b2:concurrent:flash~shipped": 10, "b3:sequential:shipped~guarded": 12, "b3:concurrent:shipped~guarded": 12, "across_blocks:sequential:flash": 11, "across_blocks:concurrent:flash": 9, "across_blocks:sequential:shipped": 11, "across_blocks:concurrent:shipped": 10, "across_blocks:sequential:guarded": 11, "across_blocks:concurrent:guarded": 11}
+parity (identical of 12): {"p1:sequential:shipped~guarded": 12, "p1:sequential:flash~guarded": 9, "p1:sequential:flash~shipped": 9, "p1:concurrent:shipped~guarded": 12, "p1:concurrent:flash~guarded": 10, "p1:concurrent:flash~shipped": 10, "p2:sequential:shipped~guarded": 12, "p2:sequential:flash~guarded": 9, "p2:sequential:flash~shipped": 9, "p2:concurrent:shipped~guarded": 12, "p2:concurrent:flash~guarded": 11, "p2:concurrent:flash~shipped": 11, "p3:sequential:shipped~guarded": 12, "p3:sequential:flash~guarded": 9, "p3:sequential:flash~shipped": 9, "p3:concurrent:shipped~guarded": 12, "p3:concurrent:flash~guarded": 10, "p3:concurrent:flash~shipped": 10, "p4:sequential:shipped~guarded": 12, "p4:sequential:flash~guarded": 9, "p4:sequential:flash~shipped": 9, "p4:concurrent:shipped~guarded": 12, "p4:concurrent:flash~guarded": 8, "p4:concurrent:flash~shipped": 8, "p5:sequential:shipped~guarded": 11, "p5:sequential:flash~guarded": 10, "p5:sequential:flash~shipped": 9, "p5:concurrent:shipped~guarded": 11, "p5:concurrent:flash~guarded": 9, "p5:concurrent:flash~shipped": 10, "p6:sequential:shipped~guarded": 12, "p6:sequential:flash~guarded": 9, "p6:sequential:flash~shipped": 9, "p6:concurrent:shipped~guarded": 11, "p6:concurrent:flash~guarded": 12, "p6:concurrent:flash~shipped": 11, "across_blocks:sequential:flash": 11, "across_blocks:concurrent:flash": 9, "across_blocks:sequential:shipped": 11, "across_blocks:concurrent:shipped": 10, "across_blocks:sequential:guarded": 11, "across_blocks:concurrent:guarded": 11}
 telemetry: {
-"a1-shipped": [
+"p1-shipped": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"a1-guarded": [
+"p1-guarded": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=4|maxk<=2048|tile=64|warps=4|stages=3",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b1-shipped": [
+"p2-shipped": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b1-guarded": [
+"p2-guarded": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=4|maxk<=2048|tile=64|warps=4|stages=3",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b2-shipped": [
+"p3-shipped": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b2-guarded": [
+"p3-guarded": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=4|maxk<=2048|tile=64|warps=4|stages=3",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b3-shipped": [
+"p4-shipped": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
 ],
-"b3-guarded": [
+"p4-guarded": [
+"capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
+"capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",
+"capture|3d=1|seqs=4|maxk<=2048|tile=64|warps=4|stages=3",
+"capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
+],
+"p5-shipped": [
+"capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
+],
+"p5-guarded": [
+"capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
+"capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",
+"capture|3d=1|seqs=4|maxk<=2048|tile=64|warps=4|stages=3",
+"capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
+],
+"p6-shipped": [
+"capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=1|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=2|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=4|maxk<=2048|tile=16|warps=None|stages=None",
+"capture|3d=1|seqs=8|maxk<=2048|tile=16|warps=None|stages=None"
+],
+"p6-guarded": [
 "capture|3d=1|seqs=16|maxk<=2048|tile=16|warps=None|stages=None",
 "capture|3d=1|seqs=1|maxk<=2048|tile=64|warps=4|stages=2",
 "capture|3d=1|seqs=2|maxk<=2048|tile=64|warps=4|stages=2",

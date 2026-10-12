@@ -1,0 +1,48 @@
+=== no Daytona GPU credits for on-demand: using spot
+=== fleet-run infer-attn-kernels-1012-181214-qsvf daytona sandbox fce6ff32-6ddb-4b9b-86ac-6d7ffbfc6e74 cpus=8 mem=32G gpu=H100 attempt=1
+2026-10-12T18:13:32Z start p6-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T18:15:58Z ready p6-guarded
+2026-10-12T18:17:52Z done p6-guarded c1
+2026-10-12T18:18:48Z done p6-guarded c4
+2026-10-12T18:19:19Z done p6-guarded c8
+2026-10-12T18:19:48Z done p6-guarded c16
+2026-10-12T18:20:17Z done p6-guarded cmax
+2026-10-12T18:20:24Z end p6-guarded
+2026-10-12T18:20:29Z start p6-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:21:10Z ready p6-shipped
+2026-10-12T18:23:03Z done p6-shipped c1
+2026-10-12T18:24:04Z done p6-shipped c4
+2026-10-12T18:24:36Z done p6-shipped c8
+2026-10-12T18:25:02Z done p6-shipped c16
+2026-10-12T18:25:34Z done p6-shipped cmax
+2026-10-12T18:25:41Z end p6-shipped
+2026-10-12T18:25:46Z start p6-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:27:02Z ready p6-flash
+2026-10-12T18:28:50Z done p6-flash c1
+2026-10-12T18:29:44Z done p6-flash c4
+2026-10-12T18:30:10Z done p6-flash c8
+2026-10-12T18:30:38Z done p6-flash c16
+2026-10-12T18:31:03Z done p6-flash cmax
+2026-10-12T18:31:10Z end p6-flash
+2026-10-12T18:31:10Z ALL DONE p6
+2026-10-12T18:19:48Z done p6-guarded c16
+2026-10-12T18:20:17Z done p6-guarded cmax
+2026-10-12T18:20:24Z end p6-guarded
+2026-10-12T18:20:29Z start p6-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T18:21:10Z ready p6-shipped
+2026-10-12T18:23:03Z done p6-shipped c1
+2026-10-12T18:24:04Z done p6-shipped c4
+2026-10-12T18:24:36Z done p6-shipped c8
+2026-10-12T18:25:02Z done p6-shipped c16
+2026-10-12T18:25:34Z done p6-shipped cmax
+2026-10-12T18:25:41Z end p6-shipped
+2026-10-12T18:25:46Z start p6-flash variant=flash backend=FLASH_ATTN
+2026-10-12T18:27:02Z ready p6-flash
+2026-10-12T18:28:50Z done p6-flash c1
+2026-10-12T18:29:44Z done p6-flash c4
+2026-10-12T18:30:10Z done p6-flash c8
+2026-10-12T18:30:38Z done p6-flash c16
+2026-10-12T18:31:03Z done p6-flash cmax
+2026-10-12T18:31:10Z end p6-flash
+2026-10-12T18:31:10Z ALL DONE p6
+=== exit 0
