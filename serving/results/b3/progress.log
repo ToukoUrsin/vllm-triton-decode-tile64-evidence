@@ -1,0 +1,17 @@
+2026-10-12T07:29:20Z start b3-guarded variant=guarded backend=TRITON_ATTN
+2026-10-12T07:30:50Z ready b3-guarded
+2026-10-12T07:32:33Z done b3-guarded c1
+2026-10-12T07:33:29Z done b3-guarded c4
+2026-10-12T07:33:55Z done b3-guarded c8
+2026-10-12T07:34:19Z done b3-guarded c16
+2026-10-12T07:34:46Z done b3-guarded cmax
+2026-10-12T07:34:53Z end b3-guarded
+2026-10-12T07:34:56Z start b3-shipped variant=shipped backend=TRITON_ATTN
+2026-10-12T07:35:37Z ready b3-shipped
+2026-10-12T07:37:18Z done b3-shipped c1
+2026-10-12T07:38:13Z done b3-shipped c4
+2026-10-12T07:38:39Z done b3-shipped c8
+2026-10-12T07:39:02Z done b3-shipped c16
+2026-10-12T07:39:29Z done b3-shipped cmax
+2026-10-12T07:39:36Z end b3-shipped
+2026-10-12T07:39:40Z start b3-flash variant=flash backend=FLASH_ATTN

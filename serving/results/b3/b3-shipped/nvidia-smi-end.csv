@@ -1,0 +1,2 @@
+name, driver_version, clocks.current.sm [MHz], clocks.max.sm [MHz], temperature.gpu, power.draw [W]
+NVIDIA H100 80GB HBM3, 595.91.07, 1980 MHz, 1980 MHz, 41, 324.36 W
